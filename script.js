@@ -16,8 +16,8 @@ function writePassword() {
     // Sets the character type criteria (lowercase, uppercase, special, or numeric) to true
     var upperCaseCriteria = true;
     var lowerCaseCriteria = true;
-    var specialCriteria = true;
-    var numericCriteria = true;
+    var specialCharacterCriteria = true;
+    var numericCharacterCriteria = true;
 
     // Arrays containing uppercase, lowercase, special, and numeric characters
     var upperCaseCharacters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
@@ -61,25 +61,71 @@ function writePassword() {
       }
     } while (!validResponse);
 
+    // Resets validResponse back to false
+    validResponse = false;
+
     // Loop to check whether user enter valid response for lowercase question (Yes or No) and gives error if not
     do {
-    var lowerCaseChoice = window.prompt("Would you like your password to contain lowercase characters?");
+      var lowerCaseChoice = window.prompt("Would you like your password to contain lowercase characters?");
 
-    // Makes response uppercase
-    lowerCaseChoice = lowerCaseChoice.toUpperCase();
+      // Makes response uppercase
+      lowerCaseChoice = lowerCaseChoice.toUpperCase();
 
-    if (lowerCaseChoice === "YES" || lowerCaseChoice === "Y") {
-      validResponse = true;
-      validationMessage = window.alert("Your password will have lowercase characters")
-    } else if (lowerCaseChoice === "NO" || lowerCaseChoice === "N") {
-      lowerCaseCriteria = false;
-      validResponse = true;
-      validationMessage = window.alert("Your password will not have lowercase characters")
-    } else {
-      errorMessage = window.alert("Please enter 'Yes', 'Y', 'No', or 'N'");
-    }
-  } while (!validResponse);
+      if (lowerCaseChoice === "YES" || lowerCaseChoice === "Y") {
+        validResponse = true;
+        validationMessage = window.alert("Your password will have lowercase characters")
+      } else if (lowerCaseChoice === "NO" || lowerCaseChoice === "N") {
+        lowerCaseCriteria = false;
+        validResponse = true;
+        validationMessage = window.alert("Your password will not have lowercase characters")
+      } else {
+        errorMessage = window.alert("Please enter 'Yes', 'Y', 'No', or 'N'");
+      }
+    } while (!validResponse);
 
+    // Resets validResponse back to false
+    validResponse = false;
+
+    // Loop to check whether user enter valid response for special character question (Yes or No) and gives error if not
+    do {
+      var specialCharacterChoice = window.prompt("Would you like your password to contain special characters?");
+  
+      // Makes response uppercase
+      specialCharacterChoice = specialCharacterChoice.toUpperCase();
+  
+      if (specialCharacterChoice === "YES" || specialCharacterChoice === "Y") {
+        validResponse = true;
+        validationMessage = window.alert("Your password will have special characters")
+      } else if (specialCharacterChoice === "NO" || specialCharacterChoice === "N") {
+        specialCharacterCriteria = false;
+        validResponse = true;
+        validationMessage = window.alert("Your password will not have special characters")
+      } else {
+        errorMessage = window.alert("Please enter 'Yes', 'Y', 'No', or 'N'");
+      }
+    } while (!validResponse);
+
+    // Resets validResponse back to false
+    validResponse = false;
+
+    // Loop to check whether user enter valid response for numeric character question (Yes or No) and gives error if not
+    do {
+      var numericCharacterChoice = window.prompt("Would you like your password to contain special characters?");
+  
+      // Makes response uppercase
+      numericCharacterChoice = numericCharacterChoice.toUpperCase();
+  
+      if (numericCharacterChoice === "YES" || numericCharacterChoice === "Y") {
+        validResponse = true;
+        validationMessage = window.alert("Your password will have numeric characters")
+      } else if (numericCharacterChoice === "NO" || numericCharacterChoice === "N") {
+        numericCharacterCriteria = false;
+        validResponse = true;
+        validationMessage = window.alert("Your password will not have numeric characters")
+      } else {
+        errorMessage = window.alert("Please enter 'Yes', 'Y', 'No', or 'N'");
+      }
+    } while (!validResponse);
 
   passwordText.value = password;
   }
