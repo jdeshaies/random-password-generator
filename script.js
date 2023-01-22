@@ -6,6 +6,8 @@ function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
+  passwordText.value = password;
+
   function generatePassword() {
     // Sets the boolean of the password being between 8 to 128 characters to false
     var passwordLengthCriteria = false;
@@ -110,7 +112,7 @@ function writePassword() {
 
     // Loop to check whether user enter valid response for numeric character question (Yes or No) and gives error if not
     do {
-      var numericCharacterChoice = window.prompt("Would you like your password to contain special characters?");
+      var numericCharacterChoice = window.prompt("Would you like your password to contain numeric characters?");
   
       // Makes response uppercase
       numericCharacterChoice = numericCharacterChoice.toUpperCase();
@@ -133,34 +135,37 @@ function writePassword() {
     // Concatenates the array of possible password characters based on what the user selected
     if (upperCaseCriteria) {
       possiblePasswordCharacters = possiblePasswordCharacters.concat(upperCaseCharacters)
-      console.log(possiblePasswordCharacters)
     }
     if (lowerCaseCriteria) {
       possiblePasswordCharacters = possiblePasswordCharacters.concat(lowerCaseCharacters)
-      console.log(possiblePasswordCharacters)
     }
     if (specialCharacterCriteria) {
       possiblePasswordCharacters = possiblePasswordCharacters.concat(specialCharacters)
-      console.log(possiblePasswordCharacters)
     }
     if (numericCharacterCriteria) {
       possiblePasswordCharacters = possiblePasswordCharacters.concat(numericCharacters)
-      console.log(possiblePasswordCharacters)
     }
 
     // Declares empty array that will used to store randomly generated password
-    var generatedPassword = []
+    var randomPasswordArray = []
 
-    // Number to randomly choose character from array of possible characters for password
-    var randomCharacter = Math.floor(Math.random() * possiblePasswordCharacters.length);
+    // Placeholder number to randomly choose character from array of possible characters for password
+    var randomNumber = 0;
 
-    
+    // Placeholder for random character that will be used to generate password 
+    var randomCharacter = "";
 
+    // Loops randomly through array of possible password characters and adds them to the generated password array
+    for (i = 0; i < passwordLength; i++){
+      randomNumber = Math.floor(Math.random() * possiblePasswordCharacters.length);
+      randomCharacter = possiblePasswordCharacters[randomNumber];
+      randomPasswordArray.push(randomCharacter);
+    }
 
+    randomPassword = randomPasswordArray.join("");
 
-  passwordText.value = password;
+    return randomPassword;
   }
-
 }
 
 // Add event listener to generate button
