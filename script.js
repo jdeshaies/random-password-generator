@@ -28,8 +28,9 @@ function writePassword() {
     // Sets the boolean for a valid response for the questions around character type to false
     var validResponse = false;
 
-    // Sets the error message to validate user input to blank string
+    // Sets the error and validation message to validate user input to blank string
     var errorMessage = "";
+    var validationMessage = "";
 
     // Loop to check whether determined password length is between 8 and 128 characters and gives error if not
     do {
@@ -41,28 +42,43 @@ function writePassword() {
       }
     } while (!passwordLengthCriteria);
 
-
+    // Loop to check whether user enter valid response for uppercase question (Yes or No) and gives error if not
     do {
-      var uppercaseChoice = window.prompt("Would you like your password to contain uppercase characters?");
+      var upperCaseChoice = window.prompt("Would you like your password to contain uppercase characters?");
 
       // Makes response uppercase
-      uppercaseChoice.toUpperCase();
+      upperCaseChoice = upperCaseChoice.toUpperCase();
 
-      if (uppercaseChoice === "YES" || uppercaseChoice === "Y") {
+      if (upperCaseChoice === "YES" || upperCaseChoice === "Y") {
         validResponse = true;
-        var validationMessage = window.alert("Your password will have uppercase characters")
-      } else if (uppercaseChoice === "NO" || uppercaseChoice === "N") {
+        validationMessage = window.alert("Your password will have uppercase characters")
+      } else if (upperCaseChoice === "NO" || upperCaseChoice === "N") {
         upperCaseCriteria = false;
         validResponse = true;
-        var validationMessage = window.alert("Your password will not have uppercase characters")
+        validationMessage = window.alert("Your password will not have uppercase characters")
       } else {
         errorMessage = window.alert("Please enter 'Yes', 'Y', 'No', or 'N'");
       }
     } while (!validResponse);
-   
 
+    // Loop to check whether user enter valid response for lowercase question (Yes or No) and gives error if not
+    do {
+    var lowerCaseChoice = window.prompt("Would you like your password to contain lowercase characters?");
 
+    // Makes response uppercase
+    lowerCaseChoice = lowerCaseChoice.toUpperCase();
 
+    if (lowerCaseChoice === "YES" || lowerCaseChoice === "Y") {
+      validResponse = true;
+      validationMessage = window.alert("Your password will have lowercase characters")
+    } else if (lowerCaseChoice === "NO" || lowerCaseChoice === "N") {
+      lowerCaseCriteria = false;
+      validResponse = true;
+      validationMessage = window.alert("Your password will not have lowercase characters")
+    } else {
+      errorMessage = window.alert("Please enter 'Yes', 'Y', 'No', or 'N'");
+    }
+  } while (!validResponse);
 
 
   passwordText.value = password;
