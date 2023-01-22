@@ -127,28 +127,35 @@ function writePassword() {
       }
     } while (!validResponse);
 
-    //Declares empty array that will be used for possible characters in password based on user choices
+    // Declares empty array that will be used for possible characters in password based on user choices
     var possiblePasswordCharacters = []
 
+    // Concatenates the array of possible password characters based on what the user selected
     if (upperCaseCriteria) {
       possiblePasswordCharacters = possiblePasswordCharacters.concat(upperCaseCharacters)
       console.log(possiblePasswordCharacters)
     }
-
     if (lowerCaseCriteria) {
       possiblePasswordCharacters = possiblePasswordCharacters.concat(lowerCaseCharacters)
       console.log(possiblePasswordCharacters)
     }
-
     if (specialCharacterCriteria) {
       possiblePasswordCharacters = possiblePasswordCharacters.concat(specialCharacters)
       console.log(possiblePasswordCharacters)
     }
-
     if (numericCharacterCriteria) {
       possiblePasswordCharacters = possiblePasswordCharacters.concat(numericCharacters)
       console.log(possiblePasswordCharacters)
     }
+
+    // Declares empty array that will used to store randomly generated password
+    var generatedPassword = []
+
+    // Number to randomly choose character from array of possible characters for password
+    var randomCharacter = Math.floor(Math.random() * possiblePasswordCharacters.length);
+
+    
+
 
 
   passwordText.value = password;
