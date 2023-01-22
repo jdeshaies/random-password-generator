@@ -162,6 +162,7 @@ function writePassword() {
       randomPasswordArray.push(randomCharacter);
     }
 
+    // Creates a random password based on the random password array without commas between the characters
     randomPassword = randomPasswordArray.join("");
 
     return randomPassword;
